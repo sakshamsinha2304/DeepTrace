@@ -51,8 +51,4 @@ Use **Choose with Windows** to open the native file picker. For only the selecte
 
 The browser's ordinary file picker cannot provide the original path, alternate data streams, or browser history. Its `lastModified` value is a file modification time, not download time. If no browser record is found, the trace reports that rather than guessing. Records may be missing after history cleanup, file renaming, or use of another browser. Windows file creation/modified times can change when copied and are shown separately.
 
-## Limits
 
-This project can request a local Defender scan on Windows, but it is not a replacement for antivirus or sandbox analysis. Entropy, strings, and file structure can flag benign files and miss malware; Defender can also miss new or modified threats. A browser download record documents a transfer; it does not prove attacker identity, initial access, or malicious behavior.
-
-Uploads are capped at 100 MB. Browser-only fallback checks are limited to 20 MB and show a warning when used.
