@@ -51,4 +51,23 @@ Use **Choose with Windows** to open the native file picker. For only the selecte
 
 The browser's ordinary file picker cannot provide the original path, alternate data streams, or browser history. Its `lastModified` value is a file modification time, not download time. If no browser record is found, the trace reports that rather than guessing. Records may be missing after history cleanup, file renaming, or use of another browser. Windows file creation/modified times can change when copied and are shown separately.
 
+## How the main result is chosen
 
+DeepTrace runs several checks and shows one main result, picked in this order:
+
+| Priority | Condition | Main result |
+|---|---|---|
+| 1 | Microsoft Defender reports a named detection | Threat detected |
+| 2 | The EICAR test string is found | Test pattern found |
+| 3 | SHA-256 is listed in MalwareBazaar | Known hash match |
+| 4 | Defender finds nothing, but the rules or MalConv flag the file | Needs review |
+| 5 | Defender scan finished and nothing is flagged | No threat detected |
+| 6 | Defender could not scan the file and nothing else is flagged | Unable to verify |
+
+All other findings stay available in the details view.
+
+## Privacy and safety
+
+- Files are only read, never executed.
+- Browser history is copied and read locally; nothing is uploaded.
+- The MalwareBazaar lookup is optional and off by default. If enabled, only the SHA-256 hash is sent, never the file.
