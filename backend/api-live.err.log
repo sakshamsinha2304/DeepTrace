@@ -1,0 +1,25 @@
+INFO:     Will watch for changes in these directories: ['C:\\Users\\saksh\\.gemini\\antigravity-ide\\scratch\\aegis-forensic-lab\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [2680] using StatReload
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=2680, pipe_handle=608)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python314\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Program Files\Python314\Lib\multiprocessing\spawn.py", line 132, in _main
+    self = reduction.pickle.load(from_parent)
+  File "C:\Program Files\Python314\Lib\multiprocessing\reduction.py", line 238, in _rebuild_socket
+    return ds.detach()
+           ~~~~~~~~~^^
+  File "C:\Program Files\Python314\Lib\multiprocessing\resource_sharer.py", line 38, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Program Files\Python314\Lib\multiprocessing\resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "C:\Program Files\Python314\Lib\multiprocessing\connection.py", line 534, in Client
+    c = PipeClient(address)
+  File "C:\Program Files\Python314\Lib\multiprocessing\connection.py", line 736, in PipeClient
+    _winapi.WaitNamedPipe(address, 1000)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
